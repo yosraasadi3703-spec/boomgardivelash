@@ -563,6 +563,9 @@ useEffect(() => {
       <img src="/licenses/license1.jpg" className="rounded-2xl shadow-lg w-full h-80 object-cover" />
       <img src="/licenses/license2.jpg" className="rounded-2xl shadow-lg w-full h-80 object-cover" />
       <img src="/licenses/license3.jpg" className="rounded-2xl shadow-lg w-full h-80 object-cover" />
+    <img src="/licenses/license4.jpg" className="rounded-2xl shadow-lg w-full h-80 object-cover" />
+    
+    
     </div>
 
     <p className="text-center mt-8 text-gray-600">
@@ -592,13 +595,15 @@ useEffect(() => {
       </div>
 
       <div className="p-6 rounded-2xl bg-stone-100">
-        🐶 ورود حیوانات خانگی: مجاز است
+        🐶 ورود حیوانات خانگی: درصورت هماهنگی
       </div>
 
       <div className="p-6 rounded-2xl bg-stone-100">
-        🚬 استعمال دخانیات: مجاز است
+        🚬 استعمال دخانیات: در محل تعیین شده 
       </div>
-
+ <div className="p-6 rounded-2xl bg-stone-100 md:col-span-2">
+       ورود زوجین همراه با مدرک زوجیت
+      </div>
       <div className="p-6 rounded-2xl bg-stone-100 md:col-span-2">
         🎉 برگزاری مراسم با مجوز رسمی امکان‌پذیر است
       </div>

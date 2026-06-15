@@ -18,16 +18,18 @@ export default function AdminCalendarPage() {
     { key: "chinar", name: "چنار" },
   ];
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/blocked-days");
-      const data = await res.json();
-      setBlockedDays(data);
-    };
+  // گرفتن داده‌ها
+  const fetchBlockedDays = async () => {
+    const res = await fetch("/api/blocked-days");
+    const data = await res.json();
+    setBlockedDays(data);
+  };
 
-    fetchData();
+  useEffect(() => {
+    fetchBlockedDays();
   }, []);
 
+  // بستن روز
   const handleBlockDay = async () => {
     if (!selectedDate) return;
 
@@ -43,10 +45,33 @@ export default function AdminCalendarPage() {
 
     alert("روز بسته شد");
 
-    const res = await fetch("/api/blocked-days");
-    setBlockedDays(await res.json());
+    setSelectedDate(null);
+    setReason("");
+
+    fetchBlockedDays();
   };
 
+  // باز کردن روز (UNBLOCK)
+  const handleUnblockDay = async () => {
+    if (!selectedDate) return;
+
+    await fetch("/api/reservations/unlock-day", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        room: selectedRoom,
+        date: selectedDate.toDate().toISOString(),
+      }),
+    });
+
+    alert("روز باز شد");
+
+    setSelectedDate(null);
+
+    fetchBlockedDays();
+  };
+
+  // چک کردن بلاک بودن
   const isBlocked = (date: any) => {
     const jsDate = new Date(date.toDate());
     jsDate.setHours(0, 0, 0, 0);
@@ -55,10 +80,7 @@ export default function AdminCalendarPage() {
       const d = new Date(b.date);
       d.setHours(0, 0, 0, 0);
 
-      return (
-        d.getTime() === jsDate.getTime() &&
-        b.room === selectedRoom
-      );
+      return d.getTime() === jsDate.getTime() && b.room === selectedRoom;
     });
   };
 
@@ -82,7 +104,7 @@ export default function AdminCalendarPage() {
         ))}
       </select>
 
-      {/* دیتاپیکر */}
+      {/* تقویم */}
       <DatePicker
         calendar={persian}
         locale={persian_fa}
@@ -101,6 +123,7 @@ export default function AdminCalendarPage() {
         }}
       />
 
+      {/* دلیل */}
       <input
         className="border p-2 w-full mt-4"
         placeholder="دلیل (اختیاری)"
@@ -108,12 +131,24 @@ export default function AdminCalendarPage() {
         onChange={(e) => setReason(e.target.value)}
       />
 
-      <button
-        onClick={handleBlockDay}
-        className="mt-4 w-full bg-black text-white p-3 rounded"
-      >
-        بستن روز انتخاب شده
-      </button>
+      {/* دکمه‌ها */}
+      <div className="flex gap-3 mt-4">
+
+        <button
+          onClick={handleBlockDay}
+          className="w-full bg-black text-white p-3 rounded"
+        >
+          بستن روز
+        </button>
+
+        <button
+          onClick={handleUnblockDay}
+          className="w-full bg-green-600 text-white p-3 rounded"
+        >
+          باز کردن روز
+        </button>
+
+      </div>
     </div>
   );
 }
