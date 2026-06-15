@@ -3,5 +3,5 @@ export async function GET() {
 }
 
 export async function POST() {
-  return Response.json({ ok: true });
+  return Response.json({ success: true });
 }
