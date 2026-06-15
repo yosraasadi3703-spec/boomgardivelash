@@ -542,9 +542,12 @@ useEffect(() => {
 
       {/* MAP */}
       <div className="bg-stone-100 rounded-2xl p-8 flex items-center justify-center">
-        <p className="text-center text-gray-600">
-          در مرحله بعد نقشه گوگل اینجا قرار می‌گیرد.
-        </p>
+        
+         <a target="_blank"
+href="https://nshn.ir/26_b24KTY50dNI">
+مشاهده روی نقشه
+</a>
+        
       </div>
 
     </div>

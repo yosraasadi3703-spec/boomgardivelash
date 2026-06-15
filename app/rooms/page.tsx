@@ -6,25 +6,24 @@ export default function RoomsPage() {
       name: "اتاق گرین",
       image: "/rooms/green.jpg",
       capacity: 7,
-      desc: "اتاقی با چشم‌انداز سبز و آرامش طبیعت",
     },
     {
       name: "اتاق ولاش",
       image: "/rooms/vlash.jpg",
       capacity: 7,
-      desc: "اتاق اصلی با فضای سنتی و گرم",
+      
     },
     {
       name: "اتاق زز",
       image: "/rooms/zz.jpg",
       capacity: 7,
-      desc: "اتاق دنج مناسب خانواده‌ها",
+     
     },
     {
       name: "اتاق چنار",
       image: "/rooms/chenar.jpg",
       capacity: 7,
-      desc: "اتاق کنار درختان چنار با حس آرامش",
+    
     },
   ];
 
@@ -48,7 +47,7 @@ export default function RoomsPage() {
 
               <div className="p-5 space-y-2">
                 <h2 className="text-xl font-bold">{room.name}</h2>
-                <p className="text-gray-600">{room.desc}</p>
+                
                 <p className="text-sm text-gray-500">
                   ظرفیت: {room.capacity} نفر
                 </p>

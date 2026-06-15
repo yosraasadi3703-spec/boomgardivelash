@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-export default function CalendarClient() {
+export default function CalendarClient({
+  reservations,
+}: {
+  reservations: any[];
+}) {
   const [date, setDate] = useState(new Date());
   const [data, setData] = useState<any>({ reservations: [], blocked: [] });
   const [room, setRoom] = useState("green");
