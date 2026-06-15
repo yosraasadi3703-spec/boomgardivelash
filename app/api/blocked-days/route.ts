@@ -1,11 +1,7 @@
 import { prisma } from "@/lib/prisma";
 
 export async function GET() {
-  const blocked = await prisma.reservation.findMany({
-    where: {
-      status: "blocked",
-    },
-  });
+  const blocked = await prisma.blockedDay.findMany();
 
   return Response.json(blocked);
 }
@@ -13,25 +9,13 @@ export async function GET() {
 export async function POST(req: Request) {
   const body = await req.json();
 
-  const { room, date } = body;
+  const { room, date, reason } = body;
 
-  if (!room || !date) {
-    return Response.json(
-      { success: false, error: "Missing fields" },
-      { status: 400 }
-    );
-  }
-
-  const blocked = await prisma.reservation.create({
+  const blocked = await prisma.blockedDay.create({
     data: {
       room,
-      name: "BLOCKED",
-      phone: "000",
-      guests: 0,
-      check_in: new Date(date),
-      check_out: new Date(date),
-      extra_names: "",
-      status: "blocked",
+      date: new Date(date),
+      reason,
     },
   });
 
