@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import { prisma } from "@/lib/prisma";
 
 const ROOM_CAPACITY: Record<string, number> = {
