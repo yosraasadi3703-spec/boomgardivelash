@@ -1,0 +1,39 @@
+{
+  "name": "velash",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@fontsource/vazirmatn": "^5.2.8",
+    "@prisma/client": "^5.22.0",
+    "@supabase/supabase-js": "^2.108.1",
+    "date-fns": "^4.4.0",
+    "firebase": "^12.14.0",
+    "framer-motion": "^12.40.0",
+    "jalali-moment": "^3.3.11",
+    "moment-jalaali": "^0.10.4",
+    "next": "^16.2.9",
+    "prisma": "^5.22.0",
+    "react": "^19.2.4",
+    "react-date-object": "^2.1.9",
+    "react-datepicker": "^9.1.0",
+    "react-dom": "^19.2.4",
+    "react-multi-date-picker": "^4.5.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/moment": "^2.11.29",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
